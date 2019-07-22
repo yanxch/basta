@@ -1,0 +1,664 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671
+{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier-BoldOblique;
+\f3\fnil\fcharset0 Menlo-Italic;\f4\fnil\fcharset0 Menlo-Regular;\f5\fnil\fcharset0 AndaleMono;
+\f6\fnil\fcharset0 HelveticaNeue;\f7\fnil\fcharset0 HelveticaNeue-Italic;\f8\fmodern\fcharset0 Courier;
+\f9\fswiss\fcharset0 ArialMT;}
+{\colortbl;\red255\green255\blue255;\red176\green0\blue4;\red0\green0\blue0;\red154\green154\blue154;
+\red242\green242\blue242;\red38\green38\blue38;\red47\green255\blue18;\red0\green0\blue0;\red52\green52\blue52;
+\red255\green255\blue255;\red23\green95\blue199;\red23\green95\blue199;\red11\green86\blue1;\red237\green237\blue237;
+\red83\green85\blue2;\red0\green0\blue255;\red237\green237\blue237;\red251\green0\blue7;\red27\green29\blue31;
+\red235\green236\blue237;}
+{\*\expandedcolortbl;;\cssrgb\c75294\c0\c0;\cssrgb\c0\c0\c0;\cssrgb\c66667\c66667\c66667;
+\cssrgb\c96078\c96078\c96078;\cssrgb\c20000\c20000\c20000;\cssrgb\c15686\c99608\c7843;\csgray\c0\c90000;\cssrgb\c26667\c26667\c26667;
+\cssrgb\c100000\c100000\c100000;\cssrgb\c9804\c46275\c82353;\cssrgb\c9804\c46275\c82353\c4706;\cssrgb\c0\c40000\c0;\cssrgb\c94510\c94510\c94510\c20000;
+\cssrgb\c40000\c40000\c0;\cssrgb\c0\c0\c100000;\cssrgb\c94510\c94510\c94510\c20000;\cssrgb\c100000\c0\c0;\cssrgb\c14118\c15294\c16078;
+\cssrgb\c93725\c94118\c94510;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww19000\viewh22580\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\b\fs36 \cf0 Begr\'fc\'dfung
+\f1\b0\fs28 \
+\
+Griass eing, mein Name ist Christian Janker und ich freue mich dar\'fcber heute hier sein zu d\'fcrfen\
+\
+um mit euch das Thema \'91Testautomatisierung mit Angular\'92 zu besprechen.\
+\
+So kann ich mal in die Welt eines Vortragenden hineinschnuppern. Des macht man als \'93normaler\'94\
+\
+Entwickler eher selten. Deswegen ist es heute umso spannender. Da gibt es sicher noch vieles zu Lernen f\'fcr mich.\
+\
+Deswegen freue ich mich schon jetzt auf euer Feedback.\
+\
+\
+\'97\'97 \
+\
+Die Folien und das Beispiel-Projekt hab ich dankenswerterweise vom Manfred zur Verf\'fcgung gestellt bekommen, somit hab ich nicht\
+\
+mir nicht mehr gro\'dfartig etwas ausdenken m\'fcssen.\
+\
+Bevor wir zum praktischen Teil, mit Angular Bezug, kommen m\'f6chte ich euch noch eine kurze Einf\'fchrung in die Welt\
+\
+des Testings geben. Wichtigste Fragen die es hier meiner Meinung nach zu kl\'e4ren gibt:\
+\
+1) Warum \'fcberhaupt Testing?\
+\
+\
+2) Auf was muss ich achten wenn ich eine Tests schreiben m\'f6chte?\
+\
+\
+3) Welche Arten von Tests gibt es? \
+\'97\'97\
+\
+Gemmas an :)\
+\
+Oiso, warum schreiben wir als Entwickler Tests f\'fcr unseren Code?\
+\
+Testen ist doch f\'fcr Weicheier!! Wir testen in da Produktion? :)\
+\
+\
+Jeder verantwortungsbewusste und professionelle Entwickler wei\'df, dass automatisierte Tests und das Entwickeln dieser \
+\
+ein fester Bestandteil des t\'e4glichen Entwickelns sind. Das haben wir so gelernt. \
+\
+Eine Aufgabe abschlie\'dfen ohne daf\'fcr Tests geschrieben zu haben? Das geh\'f6rt sich nicht.\
+\
+\'97\'97\
+\
+
+\f0\b\fs36 \'93Ein guter Entwickler schreibt Tests\'94\
+
+\f1\b0\fs28 \
+\
+Naguad! Denk man sich dann. Dann schreib ich halt noch schnell 
+\f0\b einen
+\f1\b0  Alibi Tests damit die Jungs und M\'e4dels beim Code Review\
+\
+zufrieden sind mit mir. Wird schon reichen. Denkt sich so einer vl. dann. ;)\
+\
+Und in meiner Erfahrung als Entwickler hat mich leider gelehrt, dass meistens wirklich so ist.\
+\
+Da schie\'dfen wir allerdings am Ziel vorbei!\
+\
+\
+Der wichtigste Grund warum wir als Entwickler Tests schreiben ist: \
+\
+
+\f0\b\fs36 Sicherheit (und Vertrauen)
+\f1\b0\fs28 \
+\
+Wir schreiben nicht nur einen Test daf\'fcr dass wir einen Test geschrieben haben. Wir schreiben einen Test damit wir\
+\
+nicht nur w\'e4hrend des Entwicklens sondern auch danach, wenn Code ge\'e4ndert / angepasst wird, die Sicherheit haben dass\
+\
+unsere Software noch funktioniert.\
+\
+\
+
+\f0\b\fs36 Sicherheit vor Fehlern\
+
+\f1\b0\fs28 \
+Man verhindert also Fehler bei einer \'c4nderungen / Erweiterung der Funktionalit\'e4t der Software \
+\
+\
+
+\f0\b\fs36 Sicherheit vor Regressionen\
+
+\f1\b0\fs28 \
+Aber auch sehr wichtig: Man verhindert Regressionen. Also auch Fehler die pl\'f6tzlich an ganz unerwarteten Stellen der Applikation auftreten\
+\
+\
+
+\f0\b\fs36 Sicherstellung der Anforderungen\
+\
+
+\f1\b0\fs28 Wir stellen sicher, dass die Anforderungen die an die Software gestellt wurden erf\'fcllt sind
+\f0\b\fs36 \
+\
+\
+Sicherstellung von Design\
+\
+
+\f1\b0\fs28 Eine schlecht designte Software l\'e4sst sich in der Regel schwer unit testen. \
+\
+Im Umkehrschluss kann man also sagen, dass Software mit Tests zu einem gewissen Ma\'dfe \'fcber ein ordentliches Design verf\'fcgt.\
+\
+Man kann hier soweit gehen und einen Test-Driven Ansatz zur Entwicklung von Features verwenden. Einen Ansatz bei dem \
+\
+der Test geschrieben wird bevor man den eigentlichen Produktionscode schreibt. Das hat den Vorteil, dass man automatisch strukturierter \
+\
+beim Entwickeln vorgeht da man sich immer zuvor \'fcberlegen muss was in der n\'e4chsten Entwicklungsschritt umgesetzt werden soll.\
+\
+\
+\
+
+\f0\b Schnelligkeit
+\f1\b0  - muss ich noch Scheiben\
+\
+\
+\
+\
+Jetzt haben wir mal die wichtigsten Punkte durchgesprochen \'93Warum wir Testen\'94, aber, sama uns ehrlich, das hat uns jetzt \
+\
+trotzdem nicht in wirkliche Begeisterung versetzt oder?  Wir wissen, ja wir wollen testen!! SUPER. Aber da sind noch immer so viele offene \
+\
+Fragen und Hindernisse.\
+\
+Wir wissen ja noch immer nicht wirklich was wir genau von unserer Applikation testen wollen? \
+\
+Welche Teile unseres Codes ist es zu testen wert? \
+\
+Wie detailreich testen wir? \
+\
+Das Problem ist also. Wir haben noch keine Sicherheit?\
+Wo bleibt also die versprochene Sicherheit? \
+\
+\
+Sicherheit gewinnt man n\'e4mlich nicht nur alleine durch den Fakt dass man Tests schreibt.\
+\
+Man braucht Tests in die man Vertrauen hat.\
+\
+
+\f0\b Ein guter Entwickler schreibt n\'e4mlich nicht nur Tests
+\f1\b0 . Ein guter Entwickler schreibt gute Tests.\
+Tests die einem Sicherheit geben.\
+\
+\
+Gute Tests testen die Fachlichkeit und keine Implementation Details\
+\
+Gute Tests beschreiben die Fachlichkeit\
+\
+Gute Tests sind lesbar und verst\'e4ndlich geschrieben. Sie ben\'f6tigen genau so viel Zuneigung und Liebe bzgl Codequalit\'e4t wie Produktionscode\
+\
+Gute Tests decken nicht nur die Gutf\'e4lle sondern auch die Negativf\'e4lle ab und sie testen Edge Case. \
+Das k\'f6nnen Eingaben sein mit denen man nicht rechnet, oder seltene Konstellationen von Eingabe\
+\
+Gute Tests schlagen (nur) fehl wenn sich die Funktionalit\'e4t der Software tats\'e4chlich \'e4ndert.\
+\
+Es sollte also keine sogenannten False Negative F\'e4lle geben. Das sind Tests die nach einer \'c4nderung der Software fehlschlagen,\
+obwohl die Software noch tadellos funktioniert. \
+\
+Genauso sollte es keine False Positives geben. Also Tests die durchlaufen, aber in Wirklichkeit funktioniert die Software nicht.\
+\
+Das sind die beiden h\'e4ufigsten Gr\'fcnde warum Entwickler durch Tests h\'e4ufig keine Sicherheit gewinnen.\
+\
+\'97\'97\
+So das war der war der erste Teil, gibt es dazu Fragen?\
+\'97\'97\
+\
+Dann machen wir weiter mit der Frage:\
+\
+
+\f0\b Welche Arten von Tests gibt es eigentlich?\
+
+\f1\b0 \
+Da gibt es eine Vielzahl an unterschiedlichen Testarten und Bezeichnungen. \
+\
+Und wenn man 3 Personen fragt was f\'fcr Sie eine Unit von Unit Test bedeutet dann bekommt man 4 Antworten.\
+\
+\
+\'97\'97\
+Jetzt wo wir die Grundlage und Motivation f\'fcr das Testen besprochen haben, m\'f6chte ich euch noch kurz die Tools vorstellen,\
+\
+welche Angular von Haus aus mitliefert um sofort loslegen zu k\'f6nnen und Tests zu schreiben.\
+\
+Das sind f\'fcr Unit Tests in erste Linie: Jasmine und Karma\
+\
+\
+
+\f0\b\fs36 Jasmine
+\f1\b0\fs28 \
+\
+Jasmine ist ein Framework zum Schreiben von Tests in Javascript f\'fcr Javasrcript Anwendungen.\
+\
+Es lehnt sich dabei an den Behavior Driven Development Ansatz an.\
+\
+Das Ziel ist es also sich beim Testen auf das \'93Behaviour\'94, auf das Verhalten, auf die Anforderungen und in im \
+\
+eigentliche Sinne auf die \'93Fachlichkeit\'94 der Software zu konzentrieren.\
+\
+Das versucht Jasmine \'fcber eine einfache DSL (eine eigene Beschreibungssprache) zum Beschreiben der Tests zu erreichen.\
+\
+Wie sieht diese Test-Beschreibungs-Sprache nun aus?:\
+\
+\'97\'97\'97\'97\'97\
+\
+Mit der Describe Funktion k\'f6nnen wir eine sogenannte Test-Suite erstellen.\
+\
+Dabei kann man auch von einem Test-Szenario sprechen, um eine logische Gruppierung von \'e4hnlichen, verwandten Tests\
+\
+zu erreichen.  Man testet ein Verhalten meisten ja nicht nur mit einem Testfall, sondern mit mehreren Testf\'e4llen. Man will ja\
+\
+Positive F\'e4lle genauso testen wie Negative F\'e4lle und Edge-Cases.\
+\
+\
+Das erste Argument soll dabei das zu testende \'93Verhalten\'94 grob beschreiben.\
+\
+Das zweite Argument ist eine Javascript Funktion und kapselt die weiteren zu dieser Test-Suite geh\'f6renden Beschreibungen und Testf\'e4lle.\
+\
+Man kann also ohne weiteres innerhalb der ersten Describe Funktion noch weitere Describe Funktionen verschachteln\
+\
+um das beschriebene Verhalten weiter zu untergliedern.\
+\
+Unser Beispiel, in dem eine Addition getestet wird k\'f6nnte Teile einer \'93Calculator\'94 Beschreibung sein. Also innerhalb eines\
+\
+describe(\'93Calculator\'94, \'85) in dem sich auch Tests zu den anderen Grundrechnungsarten befinden.\
+\
+\
+Danach folgen mit den sogenannten IT-Funktionen die Beschreibung zu einem konkreten Testfall und dessen Testcode.\
+\
+Um zu \'fcberpr\'fcfen ob der Testfall die gew\'fcnschten Ergebnisse zur\'fcckliefest bietet Jasmine sogenannte Matcher an.\
+\
+toBe(3)\
+\
+not.toBe(3)\
+\
+toBeNull()\
+\
+toBeDefined()\
+\
+\
+
+\f0\b Die Matcher vl noch auflisten in einer Folie!\
+
+\f1\b0 \'85\
+\
+Zur \'dcberpr\'fcfung selbst ruft man dann die expect Funktion auf.\
+\
+Dieser \'fcbergibt man das Ergebnis der Testausf\'fchrung gegen das gepr\'fcft werden soll und dann beschreibt man mittels Matcher das   \
+\
+erwartete Ergebnis.\
+\
+\
+\'97\
+\
+Dann gibt es noch die sogenannten Test-Fixture Methoden \'93
+\f0\b beforeEach
+\f1\b0 \'94 und \'93
+\f0\b afterEach
+\f1\b0 \'94 die vor / nach jedem Testfall ausgef\'fchrt werden.\
+\
+Und jene die einmal vor und ein mal nach der Ausf\'fchrung gesamten Testf\'e4lle ausgef\'fchrt werden. 
+\f0\b beforeAll
+\f1\b0  und 
+\f0\b afterAll
+\f1\b0 \
+\
+Test-Fixture Methoden verwendet man dazu um ein System vor / nach der Testausf\'fchrung in einen bestimmen Zustand zu versetzen bzw. zur\'fcck zu setzen.\
+\
+Das sind h\'e4ufig Aufrufe die sonst manuell vor jeder Testausf\'fchrung, per copy&paste in jeden Testfall kopiert werden m\'fcssten.\
+\
+Wenn wir dann Angular Spezifische Tests schreiben werden wir sehen, dass wir dann in der 
+\f0\b beforeEach
+\f1\b0  Methode immer unser Test-Modul hochziehen.\
+\
+\
+\
+\
+Um diesen Jasmine Test nun ausf\'fchren zu k\'f6nnen brauchen wir einen sogenannten Test-Runner. Den liefert Jasmine schon mit und das k\'f6nnen wir \
+\
+uns kurz ansehen. \
+\
+Ich hab hier das Jasmine Standalone Packet runtergeladen. Darin befindet sich die Datei SpecRunner.html\
+\
+Mit dieser k\'f6nnen wir unsere Testf\'e4lle ausf\'fchren.\
+\
+Dazu m\'fcssen wir sowohl die Implementierung als auch den Test mittels Script-Tag in der SpecRunner.html eintragen.\
+\
+Wenn wir nun das SpecRunner.html \'f6ffnen werden die eingetragenen Tests ausgef\'fchrt und das Ergebnis angezeigt.\
+\
+Bitte beachtet auch, dass die Beschreibung der Test-Suite und die Beschreibung eines einzelnen Testfalles gemeinsam einen \
+\
+lesbaren Satz ergeben der von dem erwarteten Behaviour, den fachlichen Anforderungen abgeleitet ist.\
+\
+\
+\'97\
+\
+ Ein Ziel unserer Tests ist ja schnelles Feedback \'fcber die Funktionalit\'e4t unserer Software. \
+\
+Wenn man jetzt jeden Test den man schreibt manuell in den Test-Runner von Jasmine eintragen m\'fcsste w\'fcrden wir zum Wookiee werden und \
+\
+es w\'e4re alles andere als schnell. \
+\
+Zus\'e4tzlich w\'e4re es fehleranf\'e4lliger, weil man es sehr leicht vergisst.\
+\
+Und das Ergebnis w\'e4re relativ schwer von einem Automatisierten Build in einer Build-Pipeline interpretierbar.\
+\
+\
+Aus diesem Grund verwenden wir nicht den Jasmine Test Runner sondern den sogenannten 
+\f0\b Karma Test Runner.
+\f1\b0 \
+\
+Dieser erlaubt uns unsere Unit Tests von der Kommandozeile aus zu starten. \
+\
+Per Konfiguration kann man angeben wo die Test-Spezifikationen gesucht werden sollen und welche File-Patterns einen Test entsprechen\
+und unter welchen Browsern die Tests ausgef\'fchrt werden sollen.\
+\
+Somit werden die Test automatisch gefunden und ausgef\'fchrt.\
+\
+Lokal \'f6ffnet sich dabei ein Browserfenster. Auf einem Build-Server verwendet man dann meistens einen Headless-Browser, also einen Browser,\
+\
+der alle Funktionalit\'e4ten eines normalen Browsers zur Verf\'fcgung stellt, nur \'fcber keine grafische Oberfl\'e4che verf\'fcgt.\
+\
+\
+\'97 \
+\
+\
+
+\f0\b\fs36 Jasmine und Angular\
+
+\f1\b0\fs28 \
+In Kombination von Jasmine mit Angular bietet Angular jetzt noch zus\'e4tzlich ein paar Features und Wrapper die einen das Testen von Angular Applikationen erleichtert. Diese werden wir uns in Folge ansehen.\
+\
+\
+
+\f0\b\fs36 TestBed
+\f1\b0\fs28 \
+\
+Das wichtigste Util zum Unit-Testen in Angular ist das 
+\f0\b TestBed
+\f1\b0 . \
+\
+Es dient in erster Linie dazu um ein isoliertes 
+\f0\b Test-Modul zu erzeugen
+\f1\b0  in welchen der Test dann l\'e4uft,\
+\
+das Dependecy Injection zur Verf\'fcgung stellt\
+\
+und um die zu testende Komponenten erzeugen zu k\'f6nnen.\
+\
+Das erzeugte Test-Modul kann man sich das wie ein \'93normales\'94 NgModule, das man zum Testen verwendet vorstellen.\
+\
+Rein technisch k\'f6nnte man auch jedes mal die gesamte Angular Applikation starten. Das ist allerdings nicht zielf\'fchrend,\
+da man dann nicht mehr von einem Unit Test sprechen sollte und\
+da das bei gr\'f6\'dferen Applikationen schon mal eine Weile dauern kann wenn man das vor jeder Testausf\'fchrung macht.\
+\
+Ich finde das Wort TestBed nicht umbedingt gut gew\'e4hlt. Wir k\'f6nnten auch meiner Meinung auch einfach Sandbox dazu sagen.\
+\
+\'97\
+\
+Auf dieser Slide sehen wir jetzt in rot hervorgehoben die Erstellung von so einem Test-Modul \'fcber den Aufruf 
+\f0\b configureTestingModule
+\f1\b0 .\
+
+\f2\i\b\fs36 \cf2 \expnd0\expndtw0\kerning0
+\CocoaLigature0 \outl0\strokewidth-112 \strokec3 \
+
+\f1\i0\b0\fs28 \cf0 \kerning1\expnd0\expndtw0 \CocoaLigature1 \outl0\strokewidth0 und als Argument die Module-Metadaten. Das ist die Konfiguration der Abh\'e4ngigkeiten unseres Test-Modules. \
+\
+Bei den Import k\'f6nnen wir zum Beispiel das HttpClientModule importieren und unter declarations geben wir zum Beispiel\
+\
+unsere FlightSearchComponent an, die wir testen wollen.\
+\
+Zum Schluss rufen wir noch die Methode \'93compileComponents\'94 auf. Diese Aufruf ben\'f6tigen wir, wenn die Komponente auf sein Template\
+\
+bzw. seine Styles per URL verweist. Man kann sich das dann so vorstellen dass der Aufruf von 
+\f0\b compileComponents
+\f1\b0  aus diesen\
+\
+externen Verweisen ein Inline Template / Inline Styles erzeugt. \
+\
+Da das asynchrone Aufrufe sind m\'fcssen wir Jasmine noch mitteilen dass es auf dies warten soll. Dies passiert in dem wir alles in einem 
+\f0\b async
+\f1\b0 ()\
+\
+Call wrappen.\
+\
+\'97\'97\
+\
+Wenn wir dann in einem Testfall die zu testende Komponente erstellen wollen rufen wir 
+\f0\b TestBed.createComponent
+\f1\b0  auf und \'fcbergeben \
+\
+den gew\'fcnschten Komponenten Typ.\
+\
+In unserem Fall hier also: FlightSearchComponet\
+\
+Zur\'fcckgeliefert von diesem Aufruf wird eine sogenanntes Fixture. Das ist ein Objekt dass die eigentlich Komponenten-Instanz wrapped \
+\
+und uns weitere Hilfsmittel zur Verf\'fcgung stellt um mit der Komponente zu arbeiten und diese zu \'fcberpr\'fcfen.\
+\
+Es hat zum Beispiel ein Feld \'93debugElement\'94 um mit dem HTML-Code der Komponente zu interagieren. Das werden wir aber sp\'e4ter in der Demo\
+\
+noch sehen.\
+\
+Genau so k\'f6nnen wir \'fcber das Feld \'93componentInstance\'94, so wie wir es hier sehen, auf die Komponente selbst zugreifen\
+\
+um dann zu \'fcberpr\'fcfen ob die \'93selectedFeld\'94 Variable undefined ist.\
+\
+
+\f0\b\fs36 Wichtig: createComponent does not trigger change detection!!\
+
+\f1\b0\fs28 \
+\'97\'97\
+\
+
+\f0\b\fs34 Asynchrone Tests\
+
+\f1\b0\fs28 \
+Zuvor haben wir beim erstellen des TestModules ja schon einen Aufruf an die Async Methode gemacht, damit wir sicherstellen konnten dass auf das \
+\
+asynchrone Laden des Templates und der Styles gewartet wird. \
+\
+Async wrapped den Aufruf in einer eigenen Testzone und wartet dann bis alle asynchronen Operation fertig sind bevor der Testfall\
+\
+abgeschlossen wird.\
+\
+Wann brauchen wir jetzt einen 
+\f0\b async
+\f1\b0  Aufruf und wann nicht?\
+\
+Immer wenn w\'e4hrend der Testausf\'fchrung auch asynchrone Operationen (wie AJAX-Requests) durchgef\'fchrt werden und auf die Fertigstellung dieser gewartet werden soll.\
+\
+Wenn wir annehmen, dass innerhalb von \'93should load flights\'94 eine Service aufgerufen wird dass einen HTTP Request macht,\
+\
+dann m\'fcssen wir diese Testausf\'fchrung in einem Async Aufruf wrappen, und auf die Fertigstellung dieses Aufrufes warten,\
+\
+ansonsten kann es passieren dass expectations nicht mehr w\'e4hrend der Testausf\'fchrung ausgef\'fchrt werden, was zu einem\
+\
+False Positive Test f\'fchren kann.\
+\
+Ein Beispiel dazu werden wir uns folgenden DEMO im Anschluss ansehen.\
+\
+\
+\'97\
+\
+
+\f0\b\fs34 Asynchrone Tests Alternative\
+
+\f1\b0\fs28 \
+Jasmine bietet auch eine M\'f6glichkeit an um die Fertigstellung von asynchronen Operationen zu kennzeichnen.\
+\
+Done ist eine sogenannte Callback Funkion die wir aufrufen sobald all asynchronen Operation abgearbeitet sind.\
+\
+Wann verwenden wir done von Jasmine? \
+\
+\
+\'97 \
+\
+DEMO\
+\
+1. Isolated Unit Test (FlightCard)\
+2. Unit Test (FlightCard)\
+3. Testing Service (FlightService)\
+\
+\
+ - TestBed.get kann nur Services erzeugen die im RootInjecter durch das TestBed erzeugt wurden injected\
+ - 
+\f3\i\fs24 \cf4 \cb5 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 debugElement.injector.get(FlightService))
+\f4\i0 \cf6 \cb1 \strokec6 \
+
+\f1\fs28 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\'97\
+\
+
+\f0\b\fs32 HttpClientTestingModule
+\f1\b0\fs28 \
+\
+In der Demo habe wir beim FLIGHT-Service Test noch die tats\'e4chliche API per HTTP-Request aufgerufen.\
+\
+Das wollen wir aber eigentlich in einem Unit Test nicht machen. \
+\
+Eigentlich wollen wir den Request mocken. \
+\
+Um den Request mocked zu k\'f6nnen, m\'fcssen wir zun\'e4chst nur den im Import im TestBed\
+\
+von HttpClientModule auf HttpClientTestingModule \'e4ndern.\
+\
+Danach haben wir die M\'f6glichkeit uns den HttpTestingController zu injecten und zu einem erwarteten Request\
+\
+an eine bestimmte URL eine Response definieren.\
+\
+Wichtig is dabei die Reihenfolge. Der expectOne Call muss nach dem eigentlichen Service-Call kommen der den HTTP-Call macht.\
+\
+Das ist zun\'e4chst etwas verwirrend. Hat wahrscheinlich mit der Implementierungsweise von HttpClientTestingModule zu tun.\
+Der wird jeden HTTP call abfangen und in einer Queue speichern. Daher muss man zuvor den Call machen bevor man\
+diesen erwartet und mocked.\
+\
+DEMO\
+\
+\'97\
+\
+
+\f0\b Globale Provider \'fcberschreiben\
+
+\f1\b0 \
+\
+Gerade f\'fcr das Testen von Komponenten kann es hilfreich sein Services mit einem Fake Implementierung zu ersetzen.\
+\
+Somit erspart man sich das mocken einzelner HTTP-Requests und arbeitet eine Abstraktionsschicht h\'f6her, was zu lesbarern Testcode f\'fcr sollte.\
+\
+Das kann man mittels 
+\f0\b provide
+\f1\b0   und 
+\f0\b useClass
+\f1\b0  beim Erstellen des Test-Modules erreichen.\
+\
+\
+
+\f0\b Provider f\'fcr Komponente \'fcberschreiben\
+
+\f1\b0 \
+Wenn man allerdings ein Service \'fcberschreiben welches an den Lebenszyklus einer Komponente gebunden ist,\
+\
+kann man die Fake-Implementierung nicht mehr mittels TestBed im Root Injector \'fcberschreiben sondern muss dies mittels\
+\
+overrideComponent() Call machen.\
+\
+\'97\
+\
+DEMO\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f5\fs36 \cf7 \cb8 \CocoaLigature0 ng test --watch --source-map=false
+\f1\fs28 \cf0 \cb1 \CocoaLigature1 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+createComponent liefert Fixture zur\'fcck. Was ist Fixture?\
+\
+\
+\
+Beispiele f\'fcr Isolated Unit Test\
+\
+Shallow Unit Tests\
+\
+Normale Component Tests mit Template \
+\
+\pard\pardeftab720\sl320\partightenfactor0
+
+\f6 \cf9 \cb10 \expnd0\expndtw0\kerning0
+Delayed change detection is intentional and useful. It gives the tester an opportunity to inspect and change the state of the component\'a0
+\f7\i before Angular initiates data binding and calls\'a0{\field{\*\fldinst{HYPERLINK "https://angular.io/guide/lifecycle-hooks"}}{\fldrslt 
+\fs33\fsmilli16800 \cf11 lifecycle hooks}}
+\f6\i0 .\
+\
+\pard\pardeftab720\sl320\partightenfactor0
+\cf9 \cb12 Rather than wonder when the test fixture will or won't perform change detection, the samples in this guide\'a0
+\f7\i always call{\field{\*\fldinst{HYPERLINK "https://angular.io/api/core/testing/ComponentFixture#detectChanges"}}{\fldrslt 
+\f8\i0\fs25\fsmilli12600 detectChanges()}}
+\f6\i0 \'a0
+\f7\i explicitly
+\f6\i0 . There is no harm in calling\'a0{\field{\*\fldinst{HYPERLINK "https://angular.io/api/core/testing/ComponentFixture#detectChanges"}}{\fldrslt 
+\f8\fs25\fsmilli12600 detectChanges()}}\'a0more often than is strictly necessary.
+\f1 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\pard\pardeftab720\sl576\partightenfactor0
+
+\f8\fs25\fsmilli12600 \cf13 \cb14 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec13 // Simulate delayed observable values with the `asyncData()` helper\cf3 \strokec3 \
+getQuoteSpy\cf15 \strokec15 .\cf16 \strokec16 and\cf15 \strokec15 .\cf3 \strokec3 returnValue\cf15 \strokec15 (\cf3 \strokec3 asyncData\cf15 \strokec15 (\cf3 \strokec3 testQuote\cf15 \strokec15 ));
+\f1\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\pard\pardeftab720\sl576\partightenfactor0
+
+\f8\fs25\fsmilli12600 \cf13 \cb17 \expnd0\expndtw0\kerning0
+/** {\field{\*\fldinst{HYPERLINK "https://angular.io/"}}{\fldrslt Create}} the HeroDetailComponent, initialize it, set test variables  */\cf3 \
+\cf16 function\cf3  createComponent\cf15 ()\cf3  \cf15 \{\cf3 \
+  fixture \cf15 =\cf3  \cf18 TestBed\cf15 .\cf3 createComponent\cf15 (\cf18 HeroDetailComponent\cf15 );\cf3 \
+  component \cf15 =\cf3  fixture\cf15 .\cf3 componentInstance\cf15 ;\cf3 \
+  page \cf15 =\cf3  \cf16 new\cf3  \cf18 Page\cf15 (\cf3 fixture\cf15 );\cf3 \
+\
+  \cf13 // 1st change detection triggers ngOnInit which gets {\field{\*\fldinst{HYPERLINK "https://angular.io/api/router/RouterLinkWithHref"}}{\fldrslt a}} hero\cf3 \
+  fixture\cf15 .\cf3 detectChanges\cf15 ();\cf3 \
+  \cf16 return\cf3  fixture\cf15 .\cf3 whenStable\cf15 ().\cf16 then\cf15 (()\cf3  \cf15 =>\cf3  \cf15 \{\cf3 \
+    \cf13 // 2nd change detection displays the async-fetched hero\cf3 \
+    fixture\cf15 .\cf3 detectChanges\cf15 ();\cf3 \
+  \cf15 \});\cf3 \
+\cf15 \}
+\f1\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+\
+Prinzipiell: Es wird pro Event-Loop Durchlauf immer eine Macro-Task von der Macro-Task-Queue durchgef\'fchrt, und darauffolgenden alle Micro-Tasks die \
+\
+gequeued sind.\
+\
+\
+\
+flush \
+- macro-task queue wird geleert\
+- macro task = 
+\f9\fs30 \cf19 \cb10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec19 setTimeout, setInterval, setImmediate, requestAnimationFrame, I/O, UI rendering
+\f1\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\
+tick\
+- micro-task queue wird geleert\
+- micro task = 
+\f9\fs30 \cf19 \cb10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec19 Promises
+\f1\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\
+\pard\pardeftab720\sl340\partightenfactor0
+
+\f9\fs30 \cf19 \cb10 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec19 No the\'a0
+\f4\fs26 \cb20 whenStable()
+\f9\fs30 \cb10 \'a0does nothing if you test without\'a0
+\f4\fs26 \cb20 async
+\f9\fs30 \cb10 \'a0of\'a0
+\f4\fs26 \cb20 fakeAsync
+\f9\fs30 \cb10 . What\'a0
+\f4\fs26 \cb20 whenStable()
+\f9\fs30 \cb10 does is to wait for all tasks in the test\'a0
+\f4\fs26 \cb20 NgZone
+\f9\fs30 \cb10 \'a0to complete. When you don't test with async the\'a0
+\f4\fs26 \cb20 NgZone
+\f9\fs30 \cb10 \'a0does not get created at all and\'a0
+\f4\fs26 \cb20 whenStable()
+\f9\fs30 \cb10 \'a0just returns immediately.
+\f1\fs28 \cf0 \cb1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+}

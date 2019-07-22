@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Flight } from '../../entities/flight';
-import { HttpHeaders, HttpParams, HttpClient } from '@angular/common/http';
-import { FlightService, DummyFlightService } from './flight.service';
-import { DatePipe } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {Flight} from '../../entities/flight';
+import {FlightService, DefaultFlightService} from './flight.service';
 
 @Component({
   selector: 'flight-search',
   templateUrl: './flight-search.component.html',
   styleUrls: ['./flight-search.component.css'],
-  // providers: [
-  //   { provide: FlightService, useClass: DummyFlightService }
-  // ]
+  providers: [
+     { provide: FlightService, useClass: DefaultFlightService }
+  ]
 })
 export class FlightSearchComponent implements OnInit {
 

@@ -15,7 +15,7 @@ export class DefaultFlightService implements FlightService {
 
   load(from: string, to: string) {
     this.find(from, to).subscribe(
-      flights => { this.flights= flights; },
+      flights => { this.flights = flights; },
       err => { console.error('err', err); }
     );
   }
@@ -28,13 +28,12 @@ export class DefaultFlightService implements FlightService {
 
     return this.http.get<Flight[]>(url, { headers, params });
   }
-
 }
 
 @Injectable()
 export class DummyFlightService implements FlightService {
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   flights: Flight[] = [];
 
@@ -53,7 +52,7 @@ const DEBUG = false;
   providedIn: 'root',
   useFactory: (http: HttpClient) => {
     if (DEBUG) {
-      return new DummyFlightService(http);
+      return new DummyFlightService();
     }
     else {
       return new DefaultFlightService(http);

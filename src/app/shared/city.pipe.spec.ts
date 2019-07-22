@@ -5,7 +5,7 @@ import { CityPipe } from './city.pipe';
 
 describe('Pipe: Citye', () => {
   it('create an instance', () => {
-    let pipe = new CityPipe();
+    const pipe = new CityPipe(null);
     expect(pipe).toBeTruthy();
   });
 });

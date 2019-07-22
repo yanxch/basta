@@ -1,17 +1,30 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {FormsModule} from '@angular/forms';
+import {RouterTestingModule} from '@angular/router/testing';
+import {FlightCardComponent} from '../flight-card/flight-card.component';
+import {FlightSearchComponent} from './flight-search.component';
+import {DummyFlightService, FlightService} from './flight.service';
 
-import { FlightSearchComponent } from './flight-search.component';
 
-describe('FlightSearchComponent', () => {
+fdescribe('Flight Search', () => {
   let component: FlightSearchComponent;
   let fixture: ComponentFixture<FlightSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlightSearchComponent ]
+      imports: [
+        FormsModule,
+        RouterTestingModule
+      ],
+      declarations: [ FlightSearchComponent, FlightCardComponent ]
+    })
+    .overrideComponent(FlightSearchComponent, {
+      set: {
+        providers: [
+          { provide: FlightService, useClass: DummyFlightService }
+        ]
+      }
     })
     .compileComponents();
   }));
